@@ -16,7 +16,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define BUFFER_SIZE 1
+#ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
 
 char	*ft_strdup(const char *s);
 char	*ft_strjoin(const char *s1, const char *s2);

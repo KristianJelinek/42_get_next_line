@@ -6,7 +6,7 @@
 /*   By: k <k@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:20:53 by k                 #+#    #+#             */
-/*   Updated: 2023/10/23 13:43:44 by k                ###   ########.fr       */
+/*   Updated: 2023/10/23 15:11:48 by k                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,40 @@ static	char	*read_line(int fd, char *buf, char *backup)
 
 static	char	*separate(char *line)
 {
-	
+	size_t	count;
+	char	*backup;
+
+	count = 0;
+	while (line[count] != '\n' && line[count] != '\0')
+		count++;
+	if (line[count] == '\0' || line[1] == '\0')
+		return (0);
+	backup = ft_substr(line, count + 1, ft_strlen(line) - count);
+	if (*backup == '\0')
+	{
+		free(backup);
+		backup = NULL;
+	}
+	line[count + 1] = '\0';
+		return (backup);
+}
+
+char	*get_next_line(int fd)
+{
+	char			*line;
+	char			*buf;
+	static	char	*backup;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (0);
+	line = read_line(fd, buf, backup);
+		free(buf);
+		buf = NULL;
+	if (!line)
+		return (NULL);
+	backup = separate(line);
+		return (line);
 }

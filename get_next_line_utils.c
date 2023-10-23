@@ -6,7 +6,7 @@
 /*   By: k <k@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:50:32 by k                 #+#    #+#             */
-/*   Updated: 2023/10/23 13:17:53 by k                ###   ########.fr       */
+/*   Updated: 2023/10/23 14:16:12 by k                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +121,28 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		}
 	}
 	return (dest);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*str;
+
+	if (!s)
+		return (NULL);
+	size_t s_len = ft_strlen(s);
+	if (start >= s_len)
+		return (ft_strdup(""));
+	size_t sub_len = (len < s_len - start) ? len : s_len - start;
+	str = (char *)malloc(sizeof(char) * (sub_len + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (i < sub_len)
+	{
+		str[i] = s[start + i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

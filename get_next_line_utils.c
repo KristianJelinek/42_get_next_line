@@ -6,7 +6,7 @@
 /*   By: kjelinek < kjelinek@student.42prague.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:50:32 by k                 #+#    #+#             */
-/*   Updated: 2023/12/04 08:37:41 by kjelinek         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:36:21 by kjelinek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	*ft_strdup(const char *s)
 	rtn = ft_memcpy(rtn, s, len);
 	return (rtn);
 }
+
 char	*ft_strjoin(const char *s1, const char *s2)
 {
 	size_t	lenght_s1;
@@ -48,6 +49,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	rtn[total_s_lenght - 1] = '\0';
 	return (rtn);
 }
+
 char	*ft_strchr(const char *s, int i)
 {
 	while (*s)
@@ -60,6 +62,7 @@ char	*ft_strchr(const char *s, int i)
 		return ((char *)s);
 	return (0);
 }
+
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;
@@ -69,74 +72,26 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	size_t	i;
-	char	*d;
-	char	*s;
 
-	i = 0;
-	d = (char *)dest;
-	s = (char *)src;
-
-	if (d == NULL && s == NULL)
-	{
-		return (NULL);
-	}
-	
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dest);
-}
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	size_t	i;
-
-	if (!dest && !src)
-		return (0);
-	i = 0;
-	if ((size_t)dest - (size_t)src < n)
-	{
-		i = n - 1;
-		while (i < n)
-		{
-			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-			i--;
-		}
-	}
-	else
-	{
-		while (i < n)
-		{
-			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-			i++;
-		}
-	}
-	return (dest);
-}
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	i;
+	size_t	s_len;
+	size_t	sub_len;
 	char	*str;
 
 	if (!s)
 		return (NULL);
-	size_t s_len = ft_strlen(s);
+	s_len = ft_strlen(s);
 	if (start >= s_len)
 		return (ft_strdup(""));
-	size_t sub_len = (len < s_len - start) ? len : s_len - start;
-	str = (char *)malloc(sizeof(char) * (sub_len + 1));
+	sub_len = len;
+	if (len >= s_len - start)
+		sub_len = s_len - start;
+	str = (char *)malloc(sub_len + 1);
 	if (!str)
 		return (NULL);
-	i = 0;
-	while (i < sub_len)
-	{
-		str[i] = s[start + i];
-		i++;
-	}
-	str[i] = '\0';
+	str[sub_len] = '\0';
+	while (sub_len--)
+		str[sub_len] = s[start + sub_len];
 	return (str);
 }

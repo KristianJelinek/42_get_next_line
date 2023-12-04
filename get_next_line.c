@@ -6,7 +6,7 @@
 /*   By: kjelinek < kjelinek@student.42prague.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:20:53 by k                 #+#    #+#             */
-/*   Updated: 2023/12/04 08:38:42 by kjelinek         ###   ########.fr       */
+/*   Updated: 2023/12/04 15:31:38 by kjelinek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	char	*read_line(int fd, char *buf, char *backup)
 		if (read_line == -1)
 			return (0);
 		else if (read_line == 0)
-			break;
+			break ;
 		buf[read_line] = '\0';
 		if (!backup)
 		{
@@ -35,10 +35,11 @@ static	char	*read_line(int fd, char *buf, char *backup)
 		free(char_temp);
 		char_temp = NULL;
 		if (ft_strchr(buf, '\n'))
-			break;
+			break ;
 	}
 	return (backup);
 }
+
 static	char	*separate(char *line)
 {
 	size_t	count;
@@ -56,13 +57,14 @@ static	char	*separate(char *line)
 		backup = NULL;
 	}
 	line[count + 1] = '\0';
-		return (backup);
+	return (backup);
 }
+
 char	*get_next_line(int fd)
 {
 	char			*line;
 	char			*buf;
-	static	char	*backup;
+	static char		*backup;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
@@ -70,10 +72,10 @@ char	*get_next_line(int fd)
 	if (!buf)
 		return (0);
 	line = read_line(fd, buf, backup);
-		free(buf);
-		buf = NULL;
+	free(buf);
+	buf = NULL;
 	if (!line)
 		return (NULL);
 	backup = separate(line);
-		return (line);
+	return (line);
 }

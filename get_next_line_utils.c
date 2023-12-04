@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: k <k@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: kjelinek < kjelinek@student.42prague.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:50:32 by k                 #+#    #+#             */
-/*   Updated: 2023/10/23 14:16:12 by k                ###   ########.fr       */
+/*   Updated: 2023/12/04 08:37:41 by kjelinek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ char	*ft_strdup(const char *s)
 	rtn = ft_memcpy(rtn, s, len);
 	return (rtn);
 }
-
 char	*ft_strjoin(const char *s1, const char *s2)
 {
 	size_t	lenght_s1;
@@ -49,7 +48,6 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	rtn[total_s_lenght - 1] = '\0';
 	return (rtn);
 }
-
 char	*ft_strchr(const char *s, int i)
 {
 	while (*s)
@@ -62,7 +60,6 @@ char	*ft_strchr(const char *s, int i)
 		return ((char *)s);
 	return (0);
 }
-
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;
@@ -72,7 +69,6 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
-
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
@@ -95,7 +91,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t	i;
@@ -122,7 +117,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;

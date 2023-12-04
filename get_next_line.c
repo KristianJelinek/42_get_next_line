@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: k <k@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: kjelinek < kjelinek@student.42prague.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:20:53 by k                 #+#    #+#             */
-/*   Updated: 2023/10/23 15:11:48 by k                ###   ########.fr       */
+/*   Updated: 2023/12/04 08:38:42 by kjelinek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static	char	*read_line(int fd, char *buf, char *backup)
 	}
 	return (backup);
 }
-
 static	char	*separate(char *line)
 {
 	size_t	count;
@@ -59,7 +58,6 @@ static	char	*separate(char *line)
 	line[count + 1] = '\0';
 		return (backup);
 }
-
 char	*get_next_line(int fd)
 {
 	char			*line;
